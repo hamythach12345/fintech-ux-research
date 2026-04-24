@@ -164,7 +164,7 @@ if submitted:
                 session_folder = f"output/session_{safe_name}_{timestamp}"
                 os.makedirs(session_folder, exist_ok=True)
                 
-                final_path = "output/04_final_report.md"
+                final_path = "output/06_final_report.md"
                 
                 st.success("🎉 Hoàn thành!")
                 
