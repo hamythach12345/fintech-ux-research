@@ -1,118 +1,156 @@
 user_research_task:
   description: >
-    Thực hiện research về: "{feature_name}"
+    Research về: "{feature_name}"
     
     DOMAIN: {domain}
     TIME SCOPE: {time_scope}
-    (QUAN TRỌNG: Tập trung dữ liệu, trends, sự kiện, số liệu TRONG 
-    mốc thời gian này. Không dùng data quá cũ nếu không relevant,
-    không forecast nếu user không yêu cầu.)
+    MARKET: {market}
+    USER SEGMENT: {user_segment}
     
-    BRIEF:
+    FOCUS CỦA BẠN:
+    - Tìm HÀNH VI CỤ THỂ của user (không phải opinion chung chung)
+    - Tìm WORKAROUND BẤT THƯỜNG (user làm khác thiết kế gốc)
+    - Tìm FRICTION cụ thể trong journey (chỗ nào user bị kẹt)
+    - Tìm QUOTE/REVIEW thực tế (app store, forum, social media)
+    - Tìm DATA gây ngạc nhiên (conversion drop, spike, anomaly)
+    
+    TRÁNH: 
+    - "User cần X tốt hơn" 
+    - "Xu hướng chung là Y"
+    - Số liệu không nguồn
+    - Generic persona
+    
+    Brief thêm:
     - Loại research: {research_type}
-    - Thị trường: {market}
-    - User segment: {user_segment}
     - Mục đích: {purpose}
     - Độ sâu: {depth}
-    - Context thêm: {extra_context}
-    
-    Thu thập theo context của domain {domain} và time scope {time_scope}:
-    1. Pain points và motivations (theo thời điểm nghiên cứu)
-    2. User journey hiện tại (tại mốc thời gian nghiên cứu)
-    3. Competitor tiêu biểu TRONG {domain} (active trong time scope)
-    4. Số liệu thị trường domain (ưu tiên data trong time scope)
-    5. Trend và opportunity (relevant với time scope)
-    
-    Lưu ý về time scope:
-    - Nếu "Hiện tại" -> chỉ data 2026
-    - Nếu "X năm gần đây" -> ưu tiên data từ (2026-X) đến 2026
-    - Nếu "Cả lịch sử" -> có thể đi xa hơn, track evolution qua thời gian
-    - Nếu "Tương lai/forecast" -> dự báo dựa trên trend hiện tại
+    - Context: {extra_context}
   expected_output: >
-    Báo cáo dữ liệu thô dạng Markdown, có section rõ ràng,
-    tập trung đúng domain, user segment, market, và time scope đã brief.
-    Mỗi data point nên có context thời gian rõ ràng (năm/quarter).
+    Raw research data dạng Markdown, có các subsection:
+    - User Behaviors Observed (hành vi specific với context)
+    - Workarounds & Anomalies (điểm bất thường)
+    - Friction Points (quotes, reviews, data)
+    - Competitor Moves (cụ thể trong {time_scope})
+    - Surprising Data Points (số liệu + source)
   agent: ux_researcher
 
 synthesis_task:
   description: >
-    Từ báo cáo thô về domain {domain} trong time scope {time_scope}, 
-    tổng hợp insight report phù hợp mục đích: {purpose}
+    Từ research data, tạo ra 5 ACTIONABLE INSIGHTS. 
     
-    Giữ nguyên domain và time context khi synthesize.
-    Sử dụng terminology phù hợp với {domain}.
-    Tham chiếu competitor active trong {time_scope}.
+    MẪU INSIGHT CHUẨN (bắt buộc follow pattern):
+    "[User state/emotion] khi [specific trigger/context], 
+    dẫn đến [observable behavior/workaround], 
+    gây ra [measurable consequence]."
     
-    Cấu trúc:
-    1. Executive Summary (3-5 câu, có mention time scope)
-    2. Top 5 Insights ưu tiên (kèm evidence + timestamp data)
-    3. Opportunity Areas (3-5 cơ hội, relevant với time scope)
-    4. Recommendations (3-5 khuyến nghị) với mô tả, priority, lý do, success metric
-    5. Risks và Considerations
+    VÍ DỤ INSIGHT TỐT:
+    "Người dùng cảm thấy bất an và thiếu kiểm soát khi ứng dụng 
+    tự động mở camera mà không giải thích rõ tại sao cần quyền này, 
+    dẫn đến việc họ cố tình che bớt thông tin trên thẻ hoặc chụp 
+    ở góc khuất để bảo mật, gây ra lỗi nhận diện (eKYC failure)."
+    
+    SELF-CHECK cho mỗi insight:
+    ✅ Có user state/emotion cụ thể? (không phải "user cảm thấy khó")
+    ✅ Có trigger/context cụ thể? (không phải "khi dùng app")
+    ✅ Có observable behavior? (user LÀM gì)
+    ✅ Có consequence measurable? (impact đo được)
+    ✅ Reader có thể guess được hướng fix mà không cần giải thích?
+    
+    Nếu 1 insight không pass 5 điểm trên → VIẾT LẠI.
+    
+    Cấu trúc output:
+    1. Executive Summary (3 câu, mention time scope + key insight)
+    2. Top 5 Actionable Insights (mỗi insight 1-3 câu, có evidence)
+    3. Opportunity Areas (3 cơ hội, ngắn gọn)
+    4. Recommendations (3-5 khuyến nghị với priority + metric)
+    5. Risks & Considerations
+    
+    Domain: {domain}, Time scope: {time_scope}
   expected_output: >
-    Insight Report v1 dạng Markdown về domain {domain} trong {time_scope}.
+    Insight Report v1 dạng Markdown. Mỗi insight là 1 câu/đoạn ngắn
+    theo pattern causal, không phải bullet list rời rạc.
   agent: insight_synthesizer
   context:
     - user_research_task
 
 review_task:
   description: >
-    Review insight report về domain {domain} (time scope {time_scope}) 
-    theo checklist 9 tiêu chí (thêm tiêu chí Time relevance).
+    Review chất lượng insight bằng "5-LAYER TEST".
     
-    CHECKLIST:
-    1. Độ chính xác dữ liệu (nguồn rõ, số liệu realistic)
-    2. Chiều sâu insight (phân tích WHY, không generic)
-    3. Tính actionable (recommendation có thể implement)
-    4. Context của {domain} tại {market}
-    5. Cấu trúc và trình bày
-    6. Coverage đúng scope
-    7. Tone và audience fit
-    8. Originality
-    9. Time scope relevance (data có nằm trong {time_scope} không? 
-       Có dùng nhầm data ngoài time scope không?)
+    Cho mỗi insight trong top 5, chấm từng layer:
+    Layer 1 - FACT: Có specific behavior/context không? (Y/N)
+    Layer 2 - WHY: Có psychological/contextual reason không? (Y/N)
+    Layer 3 - SO WHAT: Có consequence measurable không? (Y/N)
+    Layer 4 - WHY NOT: Có implicit barrier/tension không? (Y/N)
+    Layer 5 - NEXT STEP: Reader có thể guess hướng fix không? (Y/N)
+    
+    Score mỗi insight: 5/5, 4/5, 3/5, 2/5, 1/5, 0/5.
+    
+    TOTAL SCORE của report = tổng score của 5 insights (max 25/25).
     
     QUYẾT ĐỊNH:
-    - Total 36-45 -> PASS
-    - Total 27-35 -> REVISE
-    - Dưới 27 -> FAIL
+    - 20-25: PASS (insight actionable)
+    - 12-19: REVISE (một số insight generic, cần cụ thể hơn)
+    - Dưới 12: FAIL (insight quá chung chung, research lại)
+    
+    CỰC KỲ QUAN TRỌNG: Khắt khe với các dấu hiệu fake insight:
+    ❌ "User cần X tốt hơn" → FAIL layer 1
+    ❌ "Improve Y" → FAIL layer 5
+    ❌ Chỉ số liệu không lý do → FAIL layer 2
+    ❌ Không có hành vi cụ thể → FAIL layer 1
+    ❌ Không rõ hậu quả → FAIL layer 3
     
     Output format:
-    REVIEW VERDICT: [PASS | REVISE | FAIL]
-    TOTAL SCORE: X/45
     
-    SCORES:
-    1. Độ chính xác: X/5 - [feedback]
-    2. Chiều sâu: X/5 - [feedback]
-    3. Actionable: X/5 - [feedback]
-    4. Domain context: X/5 - [feedback]
-    5. Cấu trúc: X/5 - [feedback]
-    6. Coverage: X/5 - [feedback]
-    7. Tone: X/5 - [feedback]
-    8. Originality: X/5 - [feedback]
-    9. Time relevance: X/5 - [feedback về việc data có đúng mốc {time_scope} không]
+    REVIEW VERDICT: [PASS | REVISE | FAIL]
+    TOTAL SCORE: X/25
+    
+    INSIGHT-BY-INSIGHT ANALYSIS:
+    
+    Insight #1: "[first 10 words of insight]..."
+    - Layer 1 (FACT): Y/N - [feedback]
+    - Layer 2 (WHY): Y/N - [feedback]
+    - Layer 3 (SO WHAT): Y/N - [feedback]
+    - Layer 4 (WHY NOT): Y/N - [feedback]
+    - Layer 5 (NEXT STEP): Y/N - [feedback]
+    - Score: X/5
+    
+    [Repeat cho insight 2-5]
     
     TOP STRENGTHS:
-    REQUIRED FIXES:
-    FINAL ASSESSMENT:
+    - [điểm mạnh specific]
+    
+    REQUIRED FIXES (nếu REVISE/FAIL):
+    - FIX #1 for Insight #X: [chỉ rõ sửa gì, theo pattern nào]
+    - FIX #2: [...]
+    
+    FINAL ASSESSMENT: [1-2 câu]
   expected_output: >
-    Review report tiếng Việt theo format, chú ý tiêu chí time relevance.
+    Review report tiếng Việt, chấm layer by layer, feedback specific.
   agent: quality_reviewer
   context:
     - synthesis_task
 
 revision_task:
   description: >
-    Sửa insight report theo REQUIRED FIXES từ reviewer.
+    Sửa lại các insight bị flag bởi reviewer.
     
-    Domain: {domain}
-    Time scope: {time_scope}
-    Topic: "{feature_name}"
+    Đọc kỹ REQUIRED FIXES. Với mỗi insight bị REVISE:
+    1. Xác định layer nào bị fail (1-5)
+    2. Bổ sung thông tin cho layer đó
+    3. Viết lại theo pattern causal chuẩn
     
-    Sửa ĐÚNG chỗ được chỉ ra, giữ nguyên phần đã tốt.
-    Nếu có fix về time relevance, đảm bảo data mới bổ sung nằm trong {time_scope}.
+    NHẮC LẠI PATTERN:
+    "[User state/emotion] khi [specific trigger/context], 
+    dẫn đến [observable behavior], 
+    gây ra [measurable consequence]."
+    
+    KHÔNG sửa insight đã PASS.
+    
+    Domain: {domain}, Topic: "{feature_name}", Time scope: {time_scope}
   expected_output: >
-    Insight Report v2 đã sửa, có REVISION NOTES ở đầu.
+    Insight Report v2 với các insight đã được sửa theo causal pattern.
+    Đầu report có section "REVISION NOTES" ghi rõ đã sửa gì.
   agent: insight_synthesizer
   context:
     - synthesis_task
@@ -120,39 +158,71 @@ revision_task:
 
 re_review_task:
   description: >
-    Review lại Insight Report v2. Check các REQUIRED FIXES đã được sửa chưa.
-    Đặc biệt kiểm tra time relevance nếu có fix về điểm này.
-    Domain: {domain}, Time scope: {time_scope}
+    Review lại v2. Apply cùng "5-LAYER TEST" cho các insight đã sửa.
+    
+    Chú ý:
+    - Các insight được sửa có pass 5 layer chưa?
+    - Có insight mới nào accidentally bị generic hóa không?
+    - Overall report đã đạt chất lượng PASS chưa?
+    
+    Nếu vẫn REVISE/FAIL sau lần 2 → flag "NEED HUMAN REVIEW"
+    trong FINAL ASSESSMENT.
   expected_output: >
-    Review report v2 theo format chuẩn.
+    Review report v2 cùng format, tập trung vào fix compliance.
   agent: quality_reviewer
   context:
     - revision_task
 
 visualize_task:
   description: >
-    Tạo final document về "{feature_name}" trong domain {domain}, 
-    time scope {time_scope}.
+    Format insight report thành final document. 
+    KHÔNG dùng structure Fact/Why/So what/Why not/Next step 
+    làm sub-heading (rườm rà). 
     
-    Cấu trúc:
-    # [Title - có thể mention time scope nếu relevant]
+    Thay vào đó, mỗi insight trình bày như sau:
     
-    > TL;DR (3 câu)
+    ### 💡 Insight #X: [Tên ngắn, có emotional hook]
     
-    ## Research Brief
-    Bảng gồm: Domain, Market, User Segment, Time Scope, Purpose
+    [Insight 1-3 câu theo pattern causal, chứa ngầm đủ 5 tầng]
     
-    ## Executive Summary (5-7 bullets)
-    ## Key Insights (5 insights: Finding/Evidence/So what)
-    ## Opportunity Areas
-    ## Recommendations (bảng Priority/Recommendation/Rationale/Metric)
-    ## Risks and Considerations
-    ## Next Steps
+    **Evidence:** [data/quote/source cụ thể]
+    **Action direction:** [1 câu hướng fix ngắn gọn]
     
-    Footer: "Report generated by AI Research Agent"
+    ---
+    
+    Cấu trúc toàn bộ report:
+    
+    # [Title - có emotional hook, không generic]
+    
+    > **TL;DR:** [3 câu tóm tắt key insights]
+    
+    ## 📋 Research Brief
+    [Bảng: Domain, Topic, Market, User, Time Scope, Purpose]
+    
+    ## 🎯 Executive Summary
+    [5-7 bullets, mỗi bullet là 1 key insight compressed]
+    
+    ## 💡 Actionable Insights
+    [5 insights theo format trên]
+    
+    ## 🚀 Opportunity Areas
+    [3-5 cơ hội, ngắn gọn]
+    
+    ## ✅ Recommendations
+    [Bảng: Priority | Recommendation | Linked Insight | Success Metric]
+    
+    ## ⚠️ Risks & Considerations
+    
+    ## 🗺️ Next Steps
+    [3-5 action items ngắn]
+    
+    ---
+    *Report generated by AI Research Agent*
+    
+    Domain: {domain}, Time scope: {time_scope}
   expected_output: >
-    Final document Markdown chuyên nghiệp, có mention time scope 
-    ở Research Brief và phù hợp suốt report.
+    Final document Markdown, insight-first, causal thinking ẩn trong
+    cách viết (không phải trong structure).
   agent: visualizer
   context:
     - revision_task
