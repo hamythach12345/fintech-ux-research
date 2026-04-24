@@ -67,9 +67,28 @@ def ask(question, options=None, default=None):
 
 def run():
     print("\n" + "=" * 70)
-    print("🔍 UX RESEARCH PIPELINE - 4 AGENTS")
-    print("   Researcher → Synthesizer → Reviewer → Visualizer")
+    print("🔍 UNIVERSAL RESEARCH PIPELINE")
+    print("   4 Agents với Revision Loop")
     print("=" * 70)
+    
+    # Domain picker
+    domain = ask(
+        "Lĩnh vực nghiên cứu?",
+        options=[
+            "Fintech & Super App",
+            "E-commerce & Retail",
+            "EdTech & Learning",
+            "HealthTech & Wellness",
+            "Food Delivery & F&B",
+            "Logistics & Mobility",
+            "Gaming & Entertainment",
+            "B2B SaaS & Productivity",
+            "Khác"
+        ],
+        default=1
+    )
+    if domain == "Khác":
+        domain = ask("Nhập lĩnh vực cụ thể?") or "General"
     
     topic = ask("Chủ đề research?")
     while not topic:
@@ -91,19 +110,38 @@ def run():
         options=["Validate ý tưởng mới", "Improve feature hiện có", "Khám phá thị trường", "Competitive analysis"],
         default=1)
     
+    time_scope = ask(
+        "Mốc thời gian nghiên cứu?",
+        options=[
+            "Hiện tại (2026)",
+            "1 năm gần đây (2025-2026)",
+            "3 năm gần đây (2023-2026)",
+            "5 năm gần đây (2021-2026)",
+            "Cả lịch sử (xuyên suốt)",
+            "Tương lai - forecast (2026-2028)",
+            "Tùy chỉnh"
+        ],
+        default=2
+    )
+    if time_scope == "Tùy chỉnh":
+        time_scope = ask("Nhập mốc thời gian?") or "Hiện tại (2026)"
+    
     depth = ask("Độ sâu?",
         options=["Quick scan (500-800 từ)", "Standard (1000-1500 từ)", "Deep dive (2000+ từ)"],
         default=2)
     
     extra_context = ask("Context đặc biệt? (optional)")
     
+    # Print brief
     print("\n" + "=" * 70)
     print("📋 BRIEF:")
+    print(f"  Domain: {domain}")
     print(f"  Topic: {topic}")
     print(f"  Type: {research_type}")
     print(f"  Market: {market}")
     print(f"  User: {user_segment}")
     print(f"  Purpose: {purpose}")
+    print(f"  Time scope: {time_scope}")
     print(f"  Depth: {depth}")
     if extra_context:
         print(f"  Extra: {extra_context}")
@@ -121,31 +159,34 @@ def run():
     os.makedirs("output", exist_ok=True)
     
     inputs = {
+        'domain': domain,
         'feature_name': topic,
         'research_type': research_type,
         'market': market,
         'user_segment': user_segment,
         'purpose': purpose,
+        'time_scope': time_scope,
         'depth': depth,
         'extra_context': extra_context or "Không có",
         'current_year': '2026'
     }
     
-    print(f"\n⏳ Đang chạy pipeline 4 agents...\n")
+    print(f"\n⏳ Đang chạy pipeline 4 agents với revision loop...\n")
     
     try:
         result = FintechUxResearch().crew().kickoff(inputs=inputs)
         
         # Copy files vào session folder
-        for f in ['01_raw_research.md', '02_insight_draft.md', '03_review_report.md', '04_final_report.md']:
+        for f in ['01_raw_research.md', '02_insight_v1.md', '03_review_v1.md', 
+                  '04_insight_v2.md', '05_review_v2.md', '06_final_report.md']:
             src_path = f"output/{f}"
             if os.path.exists(src_path):
                 shutil.copy(src_path, f"{session_folder}/{f}")
         
-        # Export docx
+        # Export docx từ final report
         export_to_docx(
-            f"{session_folder}/04_final_report.md",
-            f"{session_folder}/04_final_report.docx"
+            f"{session_folder}/06_final_report.md",
+            f"{session_folder}/06_final_report.docx"
         )
         
         # Ghi brief
@@ -161,10 +202,12 @@ def run():
         print(f"📁 Session folder: {session_folder}/")
         print(f"   ├── 00_brief.md")
         print(f"   ├── 01_raw_research.md")
-        print(f"   ├── 02_insight_draft.md")
-        print(f"   ├── 03_review_report.md")
-        print(f"   ├── 04_final_report.md  ⭐")
-        print(f"   └── 04_final_report.docx  📄")
+        print(f"   ├── 02_insight_v1.md")
+        print(f"   ├── 03_review_v1.md")
+        print(f"   ├── 04_insight_v2.md")
+        print(f"   ├── 05_review_v2.md")
+        print(f"   ├── 06_final_report.md  ⭐")
+        print(f"   └── 06_final_report.docx  📄")
         print("=" * 70)
         
     except Exception as e:

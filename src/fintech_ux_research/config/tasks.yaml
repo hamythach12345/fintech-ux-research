@@ -1,6 +1,12 @@
 user_research_task:
   description: >
-    Thực hiện research về: "{feature_name}" trong ngành fintech/super app.
+    Thực hiện research về: "{feature_name}"
+    
+    DOMAIN: {domain}
+    TIME SCOPE: {time_scope}
+    (QUAN TRỌNG: Tập trung dữ liệu, trends, sự kiện, số liệu TRONG 
+    mốc thời gian này. Không dùng data quá cũ nếu không relevant,
+    không forecast nếu user không yêu cầu.)
     
     BRIEF:
     - Loại research: {research_type}
@@ -10,111 +16,144 @@ user_research_task:
     - Độ sâu: {depth}
     - Context thêm: {extra_context}
     
-    Thu thập:
-    1. Pain points và motivations
-    2. User journey hiện tại
-    3. So sánh competitor (MoMo, ZaloPay, GrabPay, etc.)
-    4. Số liệu thị trường
-    5. Trend và opportunity
+    Thu thập theo context của domain {domain} và time scope {time_scope}:
+    1. Pain points và motivations (theo thời điểm nghiên cứu)
+    2. User journey hiện tại (tại mốc thời gian nghiên cứu)
+    3. Competitor tiêu biểu TRONG {domain} (active trong time scope)
+    4. Số liệu thị trường domain (ưu tiên data trong time scope)
+    5. Trend và opportunity (relevant với time scope)
+    
+    Lưu ý về time scope:
+    - Nếu "Hiện tại" -> chỉ data 2026
+    - Nếu "X năm gần đây" -> ưu tiên data từ (2026-X) đến 2026
+    - Nếu "Cả lịch sử" -> có thể đi xa hơn, track evolution qua thời gian
+    - Nếu "Tương lai/forecast" -> dự báo dựa trên trend hiện tại
   expected_output: >
     Báo cáo dữ liệu thô dạng Markdown, có section rõ ràng,
-    tập trung đúng user segment và market đã brief.
+    tập trung đúng domain, user segment, market, và time scope đã brief.
+    Mỗi data point nên có context thời gian rõ ràng (năm/quarter).
   agent: ux_researcher
 
 synthesis_task:
   description: >
-    Từ báo cáo thô, tổng hợp insight report phù hợp với mục đích {purpose}.
+    Từ báo cáo thô về domain {domain} trong time scope {time_scope}, 
+    tổng hợp insight report phù hợp mục đích: {purpose}
     
-    Cấu trúc bắt buộc:
-    1. Executive Summary (3-5 câu)
-    2. Top 5 Insights ưu tiên (kèm evidence)
-    3. Opportunity Areas (3-5 cơ hội)
-    4. Recommendations (3-5 khuyến nghị), mỗi cái có mô tả, priority, lý do, success metric
+    Giữ nguyên domain và time context khi synthesize.
+    Sử dụng terminology phù hợp với {domain}.
+    Tham chiếu competitor active trong {time_scope}.
+    
+    Cấu trúc:
+    1. Executive Summary (3-5 câu, có mention time scope)
+    2. Top 5 Insights ưu tiên (kèm evidence + timestamp data)
+    3. Opportunity Areas (3-5 cơ hội, relevant với time scope)
+    4. Recommendations (3-5 khuyến nghị) với mô tả, priority, lý do, success metric
     5. Risks và Considerations
   expected_output: >
-    Insight Report dạng Markdown, phù hợp trình bày với PM và Designer.
-    Độ dài theo depth đã brief.
+    Insight Report v1 dạng Markdown về domain {domain} trong {time_scope}.
   agent: insight_synthesizer
   context:
     - user_research_task
 
 review_task:
   description: >
-    Review insight report theo checklist 8 tiêu chí dưới đây.
-    Với mỗi tiêu chí, chấm 1-5 điểm và ghi feedback cụ thể.
+    Review insight report về domain {domain} (time scope {time_scope}) 
+    theo checklist 9 tiêu chí (thêm tiêu chí Time relevance).
     
     CHECKLIST:
-    1. Độ chính xác dữ liệu (có nguồn, số liệu realistic, competitor đúng)
-    2. Chiều sâu insight (có phân tích WHY, không generic)
-    3. Tính actionable (recommendation có thể implement ngay)
-    4. Context fintech Việt Nam và SEA (hiểu quy định, thói quen local)
-    5. Cấu trúc và trình bày (heading, flow logic)
-    6. Coverage đúng scope (đủ section yêu cầu)
-    7. Tone và audience fit (phù hợp PM và Designer)
-    8. Originality (không generic, có insight specific)
+    1. Độ chính xác dữ liệu (nguồn rõ, số liệu realistic)
+    2. Chiều sâu insight (phân tích WHY, không generic)
+    3. Tính actionable (recommendation có thể implement)
+    4. Context của {domain} tại {market}
+    5. Cấu trúc và trình bày
+    6. Coverage đúng scope
+    7. Tone và audience fit
+    8. Originality
+    9. Time scope relevance (data có nằm trong {time_scope} không? 
+       Có dùng nhầm data ngoài time scope không?)
     
     QUYẾT ĐỊNH:
-    - Total từ 32 đến 40 điểm -> PASS
-    - Total từ 24 đến 31 điểm -> REVISE (list rõ điều cần sửa)
-    - Total dưới 24 điểm -> FAIL (giải thích lý do)
+    - Total 36-45 -> PASS
+    - Total 27-35 -> REVISE
+    - Dưới 27 -> FAIL
     
-    Output format bắt buộc gồm các phần sau, mỗi phần xuống dòng rõ ràng:
+    Output format:
+    REVIEW VERDICT: [PASS | REVISE | FAIL]
+    TOTAL SCORE: X/45
     
-    REVIEW VERDICT (PASS hoặc REVISE hoặc FAIL)
-    TOTAL SCORE (X trên 40)
+    SCORES:
+    1. Độ chính xác: X/5 - [feedback]
+    2. Chiều sâu: X/5 - [feedback]
+    3. Actionable: X/5 - [feedback]
+    4. Domain context: X/5 - [feedback]
+    5. Cấu trúc: X/5 - [feedback]
+    6. Coverage: X/5 - [feedback]
+    7. Tone: X/5 - [feedback]
+    8. Originality: X/5 - [feedback]
+    9. Time relevance: X/5 - [feedback về việc data có đúng mốc {time_scope} không]
     
-    SCORES - điểm chi tiết 8 tiêu chí kèm feedback cho mỗi tiêu chí
-    
-    TOP STRENGTHS - liệt kê các điểm mạnh của report
-    
-    REQUIRED FIXES - liệt kê các điều cần sửa (nếu REVISE hoặc FAIL)
-    
-    FINAL ASSESSMENT - 1-2 câu kết luận tổng quan
+    TOP STRENGTHS:
+    REQUIRED FIXES:
+    FINAL ASSESSMENT:
   expected_output: >
-    Review report bằng tiếng Việt, thẳng thắn, có lý do rõ ràng,
-    tuân thủ đúng format các section đã yêu cầu.
+    Review report tiếng Việt theo format, chú ý tiêu chí time relevance.
   agent: quality_reviewer
   context:
     - synthesis_task
 
-visualize_task:
+revision_task:
   description: >
-    Chuyển insight report thành document cuối cùng với formatting chuyên nghiệp.
+    Sửa insight report theo REQUIRED FIXES từ reviewer.
     
-    Cấu trúc document bắt buộc:
+    Domain: {domain}
+    Time scope: {time_scope}
+    Topic: "{feature_name}"
     
-    Tiêu đề chính là tên feature (dùng # heading cấp 1)
-    
-    TL;DR (dùng blockquote, 3 câu tóm tắt toàn bộ insight)
-    
-    Section Research Brief - bảng thông tin brief ngắn gọn
-    
-    Section Executive Summary - 5-7 bullet points key takeaways
-    
-    Section Key Insights - 5 insights, mỗi cái có heading cấp 3, 
-    format gồm Finding, Evidence, So what
-    
-    Section Opportunity Areas - bullet points hoặc bảng
-    
-    Section Recommendations - bảng với columns Priority, Recommendation, 
-    Rationale, Success Metric
-    
-    Section Risks and Considerations - bullet points
-    
-    Section Next Steps - 3-5 actionable bullets
-    
-    Footer là dòng note Report generated by AI UX Research Agent
-    
-    Sử dụng:
-    - Emoji icons vừa phải cho heading
-    - Bold cho keywords quan trọng
-    - Tables cho dữ liệu so sánh
-    - Blockquotes cho quotes và callouts
-    - Horizontal rule để phân chia section
+    Sửa ĐÚNG chỗ được chỉ ra, giữ nguyên phần đã tốt.
+    Nếu có fix về time relevance, đảm bảo data mới bổ sung nằm trong {time_scope}.
   expected_output: >
-    Final document dạng Markdown được format đẹp, professional,
-    ready-to-share với stakeholder.
-  agent: visualizer
+    Insight Report v2 đã sửa, có REVISION NOTES ở đầu.
+  agent: insight_synthesizer
   context:
     - synthesis_task
     - review_task
+
+re_review_task:
+  description: >
+    Review lại Insight Report v2. Check các REQUIRED FIXES đã được sửa chưa.
+    Đặc biệt kiểm tra time relevance nếu có fix về điểm này.
+    Domain: {domain}, Time scope: {time_scope}
+  expected_output: >
+    Review report v2 theo format chuẩn.
+  agent: quality_reviewer
+  context:
+    - revision_task
+
+visualize_task:
+  description: >
+    Tạo final document về "{feature_name}" trong domain {domain}, 
+    time scope {time_scope}.
+    
+    Cấu trúc:
+    # [Title - có thể mention time scope nếu relevant]
+    
+    > TL;DR (3 câu)
+    
+    ## Research Brief
+    Bảng gồm: Domain, Market, User Segment, Time Scope, Purpose
+    
+    ## Executive Summary (5-7 bullets)
+    ## Key Insights (5 insights: Finding/Evidence/So what)
+    ## Opportunity Areas
+    ## Recommendations (bảng Priority/Recommendation/Rationale/Metric)
+    ## Risks and Considerations
+    ## Next Steps
+    
+    Footer: "Report generated by AI Research Agent"
+  expected_output: >
+    Final document Markdown chuyên nghiệp, có mention time scope 
+    ở Research Brief và phù hợp suốt report.
+  agent: visualizer
+  context:
+    - revision_task
+    - re_review_task

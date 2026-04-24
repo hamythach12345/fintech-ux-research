@@ -5,7 +5,7 @@ from typing import List
 
 @CrewBase
 class FintechUxResearch():
-    """FintechUxResearch crew với 4 agents: Researcher, Synthesizer, Reviewer, Visualizer"""
+    """Research crew với 4 agents + revision loop"""
 
     agents: List[BaseAgent]
     tasks: List[Task]
@@ -53,28 +53,42 @@ class FintechUxResearch():
     def synthesis_task(self) -> Task:
         return Task(
             config=self.tasks_config['synthesis_task'],
-            output_file='output/02_insight_draft.md'
+            output_file='output/02_insight_v1.md'
         )
     
     @task
     def review_task(self) -> Task:
         return Task(
             config=self.tasks_config['review_task'],
-            output_file='output/03_review_report.md'
+            output_file='output/03_review_v1.md'
+        )
+    
+    @task
+    def revision_task(self) -> Task:
+        return Task(
+            config=self.tasks_config['revision_task'],
+            output_file='output/04_insight_v2.md'
+        )
+    
+    @task
+    def re_review_task(self) -> Task:
+        return Task(
+            config=self.tasks_config['re_review_task'],
+            output_file='output/05_review_v2.md'
         )
     
     @task
     def visualize_task(self) -> Task:
         return Task(
             config=self.tasks_config['visualize_task'],
-            output_file='output/04_final_report.md'
+            output_file='output/06_final_report.md'
         )
 
     # ========== CREW ==========
     
     @crew
     def crew(self) -> Crew:
-        """Creates the FintechUxResearch crew - sequential pipeline"""
+        """Pipeline với revision loop"""
         return Crew(
             agents=self.agents,
             tasks=self.tasks,
