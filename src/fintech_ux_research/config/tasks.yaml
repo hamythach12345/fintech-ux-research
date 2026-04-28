@@ -5,152 +5,220 @@ user_research_task:
     DOMAIN: {domain}
     TIME SCOPE: {time_scope}
     MARKET: {market}
-    USER SEGMENT: {user_segment}
+    USER HINT: {user_segment}
     
-    FOCUS CỦA BẠN:
-    - Tìm HÀNH VI CỤ THỂ của user (không phải opinion chung chung)
-    - Tìm WORKAROUND BẤT THƯỜNG (user làm khác thiết kế gốc)
-    - Tìm FRICTION cụ thể trong journey (chỗ nào user bị kẹt)
-    - Tìm QUOTE/REVIEW thực tế (app store, forum, social media)
-    - Tìm DATA gây ngạc nhiên (conversion drop, spike, anomaly)
+    MIXED-METHODS METHODOLOGY (BẮT BUỘC):
     
-    TRÁNH: 
-    - "User cần X tốt hơn" 
-    - "Xu hướng chung là Y"
-    - Số liệu không nguồn
-    - Generic persona
+    PART A - HARD DATA (định lượng):
+    - Market size + growth (có source + year)
+    - Survey stats (n=sample, methodology)
+    - Analytics data, competitor metrics
+    - Mỗi claim: [Source] [Year] [Sample]
+    - Thiếu source: flag [needs verification]
+    
+    PART B - HUMAN TRUTH (định tính):
+    - Reddit/forum quotes (thread có engagement cao)
+    - App store reviews verbatim (negative sentiment)
+    - Social listening (FB group, TikTok)
+    - Interview quotes hoặc case studies
+    - Language patterns (từ khoá user lặp lại)
+    - Weird workarounds signal hidden problem
+    
+    PART C - SEGMENTATION (5-7 personas):
+    Mỗi persona có:
+    - Demographics (age, role, location)
+    - Psychographics (motivation, fear)
+    - Income/budget bracket
+    - Job-to-be-done
+    - Trigger & barrier riêng
+    
+    PART D - ISSUE TREE (>= 3 tầng):
+    Behavior → Immediate reason → Deeper → Root cause
+    
+    PART E - SLICE DATA:
+    Cắt theo segment, income, geography, motivation.
+    Không đưa số tổng thể "chung chung".
     
     Brief thêm:
-    - Loại research: {research_type}
+    - Loại: {research_type}
     - Mục đích: {purpose}
     - Độ sâu: {depth}
     - Context: {extra_context}
   expected_output: >
-    Raw research data dạng Markdown, có các subsection:
-    - User Behaviors Observed (hành vi specific với context)
-    - Workarounds & Anomalies (điểm bất thường)
-    - Friction Points (quotes, reviews, data)
-    - Competitor Moves (cụ thể trong {time_scope})
-    - Surprising Data Points (số liệu + source)
+    Raw research data Markdown có đầy đủ:
+    
+    ## 1. Hard Data (source + sample)
+    ## 2. Human Truth (Reddit, reviews, language patterns)
+    ## 3. Personas Breakdown (5-7)
+    ## 4. Issue Tree Analysis (root cause)
+    ## 5. Sliced Data (theo segment/income/geo)
+    ## 6. Competitor Intelligence
+    ## 7. Weird Signals (anomalies, workarounds)
   agent: ux_researcher
 
 synthesis_task:
   description: >
-    Từ research data, tạo ra 5 ACTIONABLE INSIGHTS. 
+    Xây 5 insights BẮT BUỘC có 2 loại:
     
-    MẪU INSIGHT CHUẨN (bắt buộc follow pattern):
-    "[User state/emotion] khi [specific trigger/context], 
-    dẫn đến [observable behavior/workaround], 
-    gây ra [measurable consequence]."
+    LOẠI A - CAUSAL INSIGHTS (3-4 cái):
+    Pattern: "[Segment cụ thể] vì [root cause] nên [behavior 
+    quantified], dẫn đến [commercial opportunity với math]."
     
-    VÍ DỤ INSIGHT TỐT:
-    "Người dùng cảm thấy bất an và thiếu kiểm soát khi ứng dụng 
-    tự động mở camera mà không giải thích rõ tại sao cần quyền này, 
-    dẫn đến việc họ cố tình che bớt thông tin trên thẻ hoặc chụp 
-    ở góc khuất để bảo mật, gây ra lỗi nhận diện (eKYC failure)."
+    LOẠI B - CONTRARIAN INSIGHTS (1-2 cái - BẮT BUỘC):
+    Phá vỡ assumption phổ biến. Apply 3 technique:
+    1. INVERT assumption: X → Y thực ra là Y → X? hay Z?
+    2. SEGMENT SURPRISE: segment bất ngờ khác expected?
+    3. STATED vs REVEALED: user nói A, hành vi cho thấy B?
     
-    SELF-CHECK cho mỗi insight:
-    ✅ Có user state/emotion cụ thể? (không phải "user cảm thấy khó")
-    ✅ Có trigger/context cụ thể? (không phải "khi dùng app")
-    ✅ Có observable behavior? (user LÀM gì)
-    ✅ Có consequence measurable? (impact đo được)
-    ✅ Reader có thể guess được hướng fix mà không cần giải thích?
+    Pattern contrarian:
+    - "Người mua X không thực sự muốn X, họ muốn tránh Y"
+    - "Segment willing-to-pay cao nhất không phải A, mà B"
+    - "Best practice ngành phản tác dụng với segment này"
     
-    Nếu 1 insight không pass 5 điểm trên → VIẾT LẠI.
+    Self-check mỗi insight (7/7):
+    ✅ Segment cụ thể (demo + psycho + income)
+    ✅ Why-chain >= 3 tầng
+    ✅ Commercial implication
+    ✅ Evidence có source
+    ✅ Quantification
+    ✅ Actionable
+    ✅ "Wait, really?" moment
     
-    Cấu trúc output:
-    1. Executive Summary (3 câu, mention time scope + key insight)
-    2. Top 5 Actionable Insights (mỗi insight 1-3 câu, có evidence)
-    3. Opportunity Areas (3 cơ hội, ngắn gọn)
-    4. Recommendations (3-5 khuyến nghị với priority + metric)
-    5. Risks & Considerations
+    OUTPUT STRUCTURE:
+    
+    1. Executive Summary (3 câu: context, biggest insight, 
+       commercial implication)
+    
+    2. Segmentation Matrix (bảng 5-7 persona với: 
+       Size / Income / Trigger / Barrier / Price sensitivity / 
+       Preferred format)
+    
+    3. Top 5 Insights:
+       - 3-4 Causal Insights
+       - 1-2 Contrarian Insights (FLAG rõ là contrarian)
+       - Mỗi insight có evidence source
+    
+    4. Strategic Opportunities (3-5)
+    
+    5. Recommendations (3-5) BẮT BUỘC có:
+       - Action name specific
+       - Target segment chính xác
+       - Offer/price cụ thể
+       - Acquisition channel
+       - CAC target
+       - KPI leading (weekly) + lagging (quarterly)
+       - Timeline + priority
+    
+    6. Risks & open questions
     
     Domain: {domain}, Time scope: {time_scope}
   expected_output: >
-    Insight Report v1 dạng Markdown. Mỗi insight là 1 câu/đoạn ngắn
-    theo pattern causal, không phải bullet list rời rạc.
+    Insight Report v1 với mix causal + contrarian insights,
+    segmentation matrix, recommendation có đầy đủ CAC + KPI.
   agent: insight_synthesizer
   context:
     - user_research_task
 
 review_task:
   description: >
-    Review chất lượng insight bằng "5-LAYER TEST".
+    Review theo "DECISION-GRADE STANDARD".
     
-    Cho mỗi insight trong top 5, chấm từng layer:
-    Layer 1 - FACT: Có specific behavior/context không? (Y/N)
-    Layer 2 - WHY: Có psychological/contextual reason không? (Y/N)
-    Layer 3 - SO WHAT: Có consequence measurable không? (Y/N)
-    Layer 4 - WHY NOT: Có implicit barrier/tension không? (Y/N)
-    Layer 5 - NEXT STEP: Reader có thể guess hướng fix không? (Y/N)
+    7-POINT TEST mỗi insight:
+    1. Segment cụ thể (demo + psycho + income)?
+    2. Why-chain >= 3 tầng?
+    3. Commercial implication?
+    4. Evidence + source + sample?
+    5. Quantification?
+    6. Actionable cho strategic decision?
+    7. Ah-ha moment?
     
-    Score mỗi insight: 5/5, 4/5, 3/5, 2/5, 1/5, 0/5.
+    Score: N/7 mỗi insight.
     
-    TOTAL SCORE của report = tổng score của 5 insights (max 25/25).
+    BẮT BUỘC CHECK:
+    - Có >= 1 contrarian insight không? (nếu không → REVISE)
+    - Segmentation có 5+ persona không?
+    - Evidence có % data points có source?
+    - Recommendation có CAC + KPI không?
+    
+    5-POINT TEST mỗi recommendation:
+    R1: Target segment cụ thể?
+    R2: Offer/price cụ thể?
+    R3: Acquisition channel cụ thể?
+    R4: CAC target + KPI (leading + lagging)?
+    R5: Timeline/priority rõ?
+    
+    RED FLAGS auto REVISE:
+    ❌ "Người học", "user", "khách hàng" không segment
+    ❌ "Theo khảo sát cho thấy..." không source
+    ❌ "Launch micro-course" không price/channel
+    ❌ Observation không why-chain
+    ❌ KHÔNG có contrarian insight nào
     
     QUYẾT ĐỊNH:
-    - 20-25: PASS (insight actionable)
-    - 12-19: REVISE (một số insight generic, cần cụ thể hơn)
-    - Dưới 12: FAIL (insight quá chung chung, research lại)
+    - 5/5 insights >= 6/7 + >= 1 contrarian + 4/5 rec >= 4/5: PASS
+    - 3-4/5 insights >= 5/7: REVISE
+    - Còn lại: FAIL
     
-    CỰC KỲ QUAN TRỌNG: Khắt khe với các dấu hiệu fake insight:
-    ❌ "User cần X tốt hơn" → FAIL layer 1
-    ❌ "Improve Y" → FAIL layer 5
-    ❌ Chỉ số liệu không lý do → FAIL layer 2
-    ❌ Không có hành vi cụ thể → FAIL layer 1
-    ❌ Không rõ hậu quả → FAIL layer 3
-    
-    Output format:
+    OUTPUT FORMAT:
     
     REVIEW VERDICT: [PASS | REVISE | FAIL]
-    TOTAL SCORE: X/25
     
-    INSIGHT-BY-INSIGHT ANALYSIS:
+    INSIGHT ANALYSIS:
+    Insight #1 [Causal/Contrarian]: "[10 từ đầu]..."
+    - Test 1-7 (Y/N + feedback specific)
+    - Score: N/7
     
-    Insight #1: "[first 10 words of insight]..."
-    - Layer 1 (FACT): Y/N - [feedback]
-    - Layer 2 (WHY): Y/N - [feedback]
-    - Layer 3 (SO WHAT): Y/N - [feedback]
-    - Layer 4 (WHY NOT): Y/N - [feedback]
-    - Layer 5 (NEXT STEP): Y/N - [feedback]
-    - Score: X/5
+    [Repeat cho insights 2-5]
     
-    [Repeat cho insight 2-5]
+    CONTRARIAN CHECK: [có X contrarian - OK/missing]
+    SEGMENTATION CHECK: [pass/partial/fail]
+    RECOMMENDATIONS CHECK:
+    Rec #1: N/5 - [feedback]
+    [Repeat cho rec 2-5]
     
-    TOP STRENGTHS:
-    - [điểm mạnh specific]
+    STRENGTHS:
+    - [specific]
     
-    REQUIRED FIXES (nếu REVISE/FAIL):
-    - FIX #1 for Insight #X: [chỉ rõ sửa gì, theo pattern nào]
+    CRITICAL FIXES NEEDED:
+    - FIX #1: [Insight X cần bổ sung Y theo hướng Z]
     - FIX #2: [...]
     
-    FINAL ASSESSMENT: [1-2 câu]
+    FINAL ASSESSMENT: [2 câu - report có sẵn sàng cho 
+    strategic decision không?]
   expected_output: >
-    Review report tiếng Việt, chấm layer by layer, feedback specific.
+    Review report tiếng Việt khắt khe, feedback specific 
+    theo từng insight/rec.
   agent: quality_reviewer
   context:
     - synthesis_task
 
 revision_task:
   description: >
-    Sửa lại các insight bị flag bởi reviewer.
+    Sửa theo REQUIRED FIXES. Giữ nguyên phần đã tốt.
+    ĐẶC BIỆT: không water down contrarian insight chỉ vì 
+    strict review - giữ cái "wait, really?" element.
     
-    Đọc kỹ REQUIRED FIXES. Với mỗi insight bị REVISE:
-    1. Xác định layer nào bị fail (1-5)
-    2. Bổ sung thông tin cho layer đó
-    3. Viết lại theo pattern causal chuẩn
+    Với mỗi insight bị fail test nào, bổ sung element đó:
+    - Fail Test 1: chỉ rõ demo + psycho + income
+    - Fail Test 2: decompose xuống 3 tầng
+    - Fail Test 3: thêm business math ngầm
+    - Fail Test 4: tìm source hoặc flag [needs verification]
+    - Fail Test 5: thêm số cụ thể
+    - Fail Test 6: reader có thể ra decision
+    - Fail Test 7: thêm counter-intuitive element
     
-    NHẮC LẠI PATTERN:
-    "[User state/emotion] khi [specific trigger/context], 
-    dẫn đến [observable behavior], 
-    gây ra [measurable consequence]."
+    Nếu report thiếu contrarian insight → TẠO thêm 1-2 cái 
+    bằng technique:
+    - Invert assumption
+    - Segment surprise
+    - Stated vs revealed
     
-    KHÔNG sửa insight đã PASS.
+    Đầu report thêm REVISION NOTES ghi rõ đã fix gì.
     
     Domain: {domain}, Topic: "{feature_name}", Time scope: {time_scope}
   expected_output: >
-    Insight Report v2 với các insight đã được sửa theo causal pattern.
-    Đầu report có section "REVISION NOTES" ghi rõ đã sửa gì.
+    Insight Report v2 với fixes applied, contrarian được 
+    preserve/bổ sung, REVISION NOTES ở đầu.
   agent: insight_synthesizer
   context:
     - synthesis_task
@@ -158,71 +226,119 @@ revision_task:
 
 re_review_task:
   description: >
-    Review lại v2. Apply cùng "5-LAYER TEST" cho các insight đã sửa.
+    Apply cùng "DECISION-GRADE STANDARD" cho v2.
     
-    Chú ý:
-    - Các insight được sửa có pass 5 layer chưa?
-    - Có insight mới nào accidentally bị generic hóa không?
-    - Overall report đã đạt chất lượng PASS chưa?
+    Check:
+    - Fixes đã done chưa?
+    - Contrarian insights còn không (không bị water down)?
+    - Segmentation đạt chuẩn chưa?
+    - Recommendation có đủ CAC + KPI chưa?
+    - Chất lượng tổng đạt PASS chưa?
     
-    Nếu vẫn REVISE/FAIL sau lần 2 → flag "NEED HUMAN REVIEW"
+    Nếu vẫn REVISE/FAIL sau 2 lần → flag "NEED HUMAN REVIEW" 
     trong FINAL ASSESSMENT.
   expected_output: >
-    Review report v2 cùng format, tập trung vào fix compliance.
+    Review report v2 cùng format, focus vào fix compliance.
   agent: quality_reviewer
   context:
     - revision_task
 
 visualize_task:
   description: >
-    Format insight report thành final document. 
-    KHÔNG dùng structure Fact/Why/So what/Why not/Next step 
-    làm sub-heading (rườm rà). 
+    Tạo HYBRID REPORT có cả Executive Quick View + Narrative 
+    Deep Dive + Detailed Actions.
     
-    Thay vào đó, mỗi insight trình bày như sau:
+    CẤU TRÚC:
     
-    ### 💡 Insight #X: [Tên ngắn, có emotional hook]
+    # [Title có hook commercial + emotional]
     
-    [Insight 1-3 câu theo pattern causal, chứa ngầm đủ 5 tầng]
+    ═══════════════════════════════════════════════
+    PHẦN 1 - EXECUTIVE QUICK VIEW (scan 60s)
+    ═══════════════════════════════════════════════
     
-    **Evidence:** [data/quote/source cụ thể]
-    **Action direction:** [1 câu hướng fix ngắn gọn]
-    
-    ---
-    
-    Cấu trúc toàn bộ report:
-    
-    # [Title - có emotional hook, không generic]
-    
-    > **TL;DR:** [3 câu tóm tắt key insights]
+    > **TL;DR (30 giây):** 
+    > - Insight quan trọng nhất (1 câu)
+    > - Contrarian finding (1 câu)
+    > - Big opportunity (1 câu)
     
     ## 📋 Research Brief
     [Bảng: Domain, Topic, Market, User, Time Scope, Purpose]
     
-    ## 🎯 Executive Summary
-    [5-7 bullets, mỗi bullet là 1 key insight compressed]
+    ## 👥 Segmentation Matrix
+    [Bảng 5-7 persona: Size / Income / Trigger / Barrier / 
+    Price Sensitivity / Preferred Format]
     
-    ## 💡 Actionable Insights
-    [5 insights theo format trên]
+    ## ⚡ Key Insights at a Glance
+    [5 bullets ngắn, 1 câu/insight - cho scan nhanh]
     
-    ## 🚀 Opportunity Areas
-    [3-5 cơ hội, ngắn gọn]
+    ═══════════════════════════════════════════════
+    PHẦN 2 - NARRATIVE DEEP DIVE (5-act story)
+    ═══════════════════════════════════════════════
+    
+    ## 🎬 Act 1: Current Reality
+    [2-3 đoạn về cái ai cũng thấy, common understanding]
+    [Set baseline, tone matter-of-fact]
+    
+    ## 🔍 Act 2: The Hidden Truth
+    [Reveal contrarian insight mạnh nhất]
+    [Support bằng hard data + human quote]
+    [Tone: "here's what nobody talks about..."]
+    
+    ## 🎯 Act 3: The Big Bet
+    [If true, opportunity là gì?]
+    [Size + unit economics ngầm]
+    [Position vs competitors]
+    [Tone: visionary but grounded]
+    
+    ## ⏰ Act 4: Why Now
+    [Market shift, tech enabler, behavior change]
+    [Window opportunity đang mở, 2 năm trước không work]
+    [Tone: urgent, momentum]
+    
+    ## 🚀 Act 5: What To Do Monday
+    [Concrete actions next week]
+    [First experiment + success criteria]
+    [Tone: practical, executable]
+    
+    ═══════════════════════════════════════════════
+    PHẦN 3 - DETAILED INSIGHTS & ACTIONS
+    ═══════════════════════════════════════════════
+    
+    ## 💡 Full Actionable Insights
+    
+    ### Insight #1 [Causal/Contrarian]: [Hook title]
+    [1-3 câu insight theo pattern 2-tầng]
+    
+    **Evidence:** [source + year + sample hoặc quote]
+    **Commercial angle:** [opportunity + business math]
+    
+    ---
+    [Lặp cho insights 2-5]
     
     ## ✅ Recommendations
-    [Bảng: Priority | Recommendation | Linked Insight | Success Metric]
+    [Bảng chi tiết:
+    | # | Priority | Action | Target Segment | Offer/Price | 
+    | Channel | CAC Target | KPI Leading | KPI Lagging | Timeline |]
     
-    ## ⚠️ Risks & Considerations
+    ## ⚠️ Risks & Open Questions
+    [Bullet points]
     
-    ## 🗺️ Next Steps
+    ## 🗺️ Next 90 Days
     [3-5 action items ngắn]
     
     ---
     *Report generated by AI Research Agent*
     
+    NGUYÊN TẮC:
+    - Executive scan Phần 1 trong 60s
+    - Founder/Strategy đọc Phần 2 cho inspiration
+    - Team execute Phần 3 với full detail
+    - Preserve insights 2-tầng + contrarian xuyên suốt
+    
     Domain: {domain}, Time scope: {time_scope}
   expected_output: >
-    Final document Markdown, insight-first, causal thinking ẩn trong
-    cách viết (không phải trong structure).
+    Final document Markdown hybrid (clean + narrative + detailed),
+    phục vụ cả executive (scan) và founder (read deep).
   agent: visualizer
   context:
     - revision_task
