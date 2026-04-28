@@ -1,5 +1,10 @@
 user_research_task:
   description: >
+    🇻🇳 NGÔN NGỮ BẮT BUỘC: Toàn bộ output bằng TIẾNG VIỆT.
+    Heading, label, body text, terminology - tất cả tiếng Việt.
+    Chỉ giữ nguyên: tên thương hiệu (Grab, MoMo), thuật ngữ kỹ 
+    thuật không có bản dịch tốt (CAC, LTV, CTR, KPI), tên người.
+
     Research về: "{feature_name}"
     
     DOMAIN: {domain}
@@ -58,6 +63,11 @@ user_research_task:
 
 synthesis_task:
   description: >
+    🇻🇳 NGÔN NGỮ BẮT BUỘC: Toàn bộ output bằng TIẾNG VIỆT.
+    Heading, label, body text, terminology - tất cả tiếng Việt.
+    Chỉ giữ nguyên: tên thương hiệu (Grab, MoMo), thuật ngữ kỹ 
+    thuật không có bản dịch tốt (CAC, LTV, CTR, KPI), tên người.
+
     Xây 5 insights BẮT BUỘC có 2 loại:
     
     LOẠI A - CAUSAL INSIGHTS (3-4 cái):
@@ -121,6 +131,11 @@ synthesis_task:
 
 review_task:
   description: >
+    🇻🇳 NGÔN NGỮ BẮT BUỘC: Toàn bộ output bằng TIẾNG VIỆT.
+    Heading, label, body text, terminology - tất cả tiếng Việt.
+    Chỉ giữ nguyên: tên thương hiệu (Grab, MoMo), thuật ngữ kỹ 
+    thuật không có bản dịch tốt (CAC, LTV, CTR, KPI), tên người.
+
     Review theo "DECISION-GRADE STANDARD".
     
     7-POINT TEST mỗi insight:
@@ -194,6 +209,11 @@ review_task:
 
 revision_task:
   description: >
+    🇻🇳 NGÔN NGỮ BẮT BUỘC: Toàn bộ output bằng TIẾNG VIỆT.
+    Heading, label, body text, terminology - tất cả tiếng Việt.
+    Chỉ giữ nguyên: tên thương hiệu (Grab, MoMo), thuật ngữ kỹ 
+    thuật không có bản dịch tốt (CAC, LTV, CTR, KPI), tên người.
+
     Sửa theo REQUIRED FIXES. Giữ nguyên phần đã tốt.
     ĐẶC BIỆT: không water down contrarian insight chỉ vì 
     strict review - giữ cái "wait, really?" element.
@@ -226,6 +246,10 @@ revision_task:
 
 re_review_task:
   description: >
+    🇻🇳 NGÔN NGỮ BẮT BUỘC: Toàn bộ output bằng TIẾNG VIỆT.
+    Heading, label, body text, terminology - tất cả tiếng Việt.
+    Chỉ giữ nguyên: tên thương hiệu (Grab, MoMo), thuật ngữ kỹ 
+    thuật không có bản dịch tốt (CAC, LTV, CTR, KPI), tên người.
     Apply cùng "DECISION-GRADE STANDARD" cho v2.
     
     Check:
@@ -245,6 +269,11 @@ re_review_task:
 
 visualize_task:
   description: >
+    🇻🇳 NGÔN NGỮ BẮT BUỘC: Toàn bộ output bằng TIẾNG VIỆT.
+    Heading, label, body text, terminology - tất cả tiếng Việt.
+    Chỉ giữ nguyên: tên thương hiệu (Grab, MoMo), thuật ngữ kỹ 
+    thuật không có bản dịch tốt (CAC, LTV, CTR, KPI), tên người.
+
     Tạo HYBRID REPORT có cả Executive Quick View + Narrative 
     Deep Dive + Detailed Actions.
     
@@ -271,31 +300,35 @@ visualize_task:
     ## ⚡ Key Insights at a Glance
     [5 bullets ngắn, 1 câu/insight - cho scan nhanh]
     
-    ═══════════════════════════════════════════════
+═══════════════════════════════════════════════
     PHẦN 2 - NARRATIVE DEEP DIVE (5-act story)
     ═══════════════════════════════════════════════
     
-    ## 🎬 Act 1: Current Reality
+    QUAN TRỌNG: Toàn bộ heading và nội dung bằng TIẾNG VIỆT.
+    KHÔNG dùng "Hidden Truth", "Big Bet", "Why Now". Dùng tên 
+    tiếng Việt như sau:
+    
+    ## 🎬 Hồi 1: Bức tranh hiện tại
     [2-3 đoạn về cái ai cũng thấy, common understanding]
     [Set baseline, tone matter-of-fact]
     
-    ## 🔍 Act 2: The Hidden Truth
+    ## 🔍 Hồi 2: Sự thật ẩn giấu
     [Reveal contrarian insight mạnh nhất]
     [Support bằng hard data + human quote]
-    [Tone: "here's what nobody talks about..."]
+    [Tone: "đây là điều ít ai để ý..."]
     
-    ## 🎯 Act 3: The Big Bet
+    ## 🎯 Hồi 3: Cú đặt cược lớn
     [If true, opportunity là gì?]
     [Size + unit economics ngầm]
     [Position vs competitors]
     [Tone: visionary but grounded]
     
-    ## ⏰ Act 4: Why Now
+    ## ⏰ Hồi 4: Tại sao lại là lúc này?
     [Market shift, tech enabler, behavior change]
     [Window opportunity đang mở, 2 năm trước không work]
     [Tone: urgent, momentum]
     
-    ## 🚀 Act 5: What To Do Monday
+    ## 🚀 Hồi 5: Cần làm gì ngay tuần tới?
     [Concrete actions next week]
     [First experiment + success criteria]
     [Tone: practical, executable]
