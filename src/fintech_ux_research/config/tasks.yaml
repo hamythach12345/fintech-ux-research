@@ -22,7 +22,13 @@ user_research_task:
     
     - Feature research → JTBD + User Journey + Friction Audit
     - User segment → Persona Profiling + Switching Triggers
-    - Market/Competitor → Porter 5F + Positioning + Market Sizing
+    - Market/Competitor → CONSULTING-GRADE FRAMEWORK 4 PARTS:
+       PART 1 - Executive Summary (3 câu hỏi cốt lõi)
+       PART 2 - Player Overview (DNA + Scale + Position + 
+                Ecosystem + Growth + Milestones)
+       PART 3 - Success Factor Analysis (AIDA Funnel + 
+                Product vs External + 3C + CSFs)
+       PART 4 - Implications (Threat/Learn/Copy/Counter per player)
     - Trend research → PESTEL + Signals→Trends + 3 Horizons
     
     Sources cũng adapt theo type (xem backstory).
@@ -228,17 +234,37 @@ visualize_task:
     7. Chiến lược Targeting (Option B/E)
     8. Rủi ro per segment
     
-    💼 Market/Competitor structure:
-    1. Executive Summary
+💼 Market/Competitor structure (CONSULTING DECK STYLE):
+    
+    1. Executive Summary - Trả lời 3 câu cốt lõi:
+       - Đối thủ là ai và mạnh cỡ nào?
+       - Tại sao họ thành công?
+       - Ý nghĩa gì với chúng ta?
+    
     2. Tóm tắt Research Brief
-    3. Tổng quan Thị trường
-    4. Bản đồ Cạnh tranh (positioning map)
-    5. Đào sâu Competitor (top 3-5)
+    
+    3. Tổng quan Đối thủ (Player Overview):
+       - Bảng so sánh tổng thể
+       - Đào sâu từng player (DNA + Scale + Position + 
+         Ecosystem + Growth + Milestones)
+    
+    4. Giải mã Thành công (Success Factor Analysis):
+       - Framework A: Awareness → Trial → Usage Funnel
+       - Framework B: Product vs External Factors
+       - Framework C: 3C Analysis (Customer/Company/Competitor)
+       - Critical Success Factors (CSFs) cho industry
+    
+    5. Hàm ý cho Chúng ta (Implications):
+       - Bảng tổng hợp Threat/Learn/Copy/Counter
+       - Đào sâu cho Top 3 threats
+    
     6. [5-Act Narrative section]
-    7. Strategic Insights
-    8. Phân tích White Space
-    9. Đề xuất Chiến lược (Option D)
-    10. Rủi ro & Watchlist
+    
+    7. Watchlist - Tín hiệu cần theo dõi
+    
+    8. Rủi ro
+    
+    Tone: management consulting, analytical, board-ready
     
     🔮 Trend research structure:
     1. TL;DR

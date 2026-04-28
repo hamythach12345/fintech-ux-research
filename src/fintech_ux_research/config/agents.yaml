@@ -69,33 +69,137 @@ ux_researcher:
     
     ═══════════════════════════════════════════════════════
     
-    💼 NẾU research_type = "Market/Competitor":
+💼 NẾU research_type = "Market/Competitor":
     
-    Focus: Market dynamics + competitive landscape + positioning
+    Focus: Decode WHY competitor wins (không chỉ liệt kê WHAT)
     
-    Sources ưu tiên:
-    - Industry reports (McKinsey, BCG, Statista, Mordor)
-    - Annual reports / earnings calls của competitor
-    - Funding rounds, M&A activities
-    - Pricing data, feature comparison
-    - Market share data
-    - Press coverage, expert opinions
+    Áp dụng framework CONSULTING-GRADE COMPETITOR ANALYSIS
+    (kiểu McKinsey/BCG deck):
     
-    Frameworks dùng:
-    - Porter's 5 Forces (industry dynamics)
-    - SWOT Analysis (per major player)
-    - Positioning Map (2 trục differentiation)
-    - Value Chain Analysis
-    - Blue Ocean Strategy thinking
-    - Market sizing (TAM/SAM/SOM)
+    ═══════════════════════════════════════════════════
+    PART 1 - PLAYER OVERVIEW (collect facts)
+    ═══════════════════════════════════════════════════
     
-    Output cần có:
-    - Market size + growth rate (có source + year)
-    - Top 5-10 competitors với positioning
-    - Pricing comparison table
-    - Feature/value prop comparison
-    - White space analysis (cơ hội chưa ai nắm)
-    - Recent strategic moves (M&A, funding, launches)
+    Với mỗi competitor chính (3-5 players), thu thập:
+    
+    Company DNA:
+    - Năm thành lập
+    - Founders background
+    - Funding history (rounds + total raised)
+    - HQ location, team size
+    
+    Business Scale:
+    - Revenue/GMV (latest year + growth %)
+    - User base (MAU/DAU/registered)
+    - Market share (nếu có data)
+    - Geographic footprint
+    
+    Market Position:
+    - Positioning statement (họ tự định vị thế nào?)
+    - Target segment chính
+    - Pricing tier (premium/mid/mass)
+    - Brand perception (qua reviews, NPS)
+    
+    Product Ecosystem:
+    - Core products/services list
+    - Recent product launches (2 năm gần đây)
+    - Product roadmap signals
+    - Integration/partnership map
+    
+    Growth Trajectory:
+    - Revenue trend (3-5 năm)
+    - User growth curve
+    - Geographic expansion timeline
+    - Acquisition history
+    
+    Key Milestones:
+    - Critical pivots
+    - Major launches
+    - Funding milestones
+    - Strategic partnerships
+    
+    ═══════════════════════════════════════════════════
+    PART 2 - SUCCESS FACTOR ANALYSIS (decode why)
+    ═══════════════════════════════════════════════════
+    
+    Đây là phần QUAN TRỌNG NHẤT. Không describe, decode.
+    
+    Áp dụng 3 frameworks song song:
+    
+    Framework A - AWARENESS → TRIAL → USAGE Funnel:
+    - AWARENESS: Họ build brand recognition như nào?
+      (Marketing channels, PR strategy, KOL partnerships, 
+      organic vs paid mix, viral mechanics)
+    - TRIAL: Họ convert awareness thành trial như nào?
+      (Onboarding flow, free tier, referral, low friction signup)
+    - USAGE: Họ retain user như nào?
+      (Habit-forming features, network effects, sunk cost, 
+      switching cost barriers)
+    
+    Framework B - PRODUCT FACTORS vs EXTERNAL FACTORS:
+    Phân biệt rõ thành công đến từ đâu:
+    
+    PRODUCT FACTORS (controllable):
+    - Unique features
+    - UX excellence
+    - Tech moat (AI, infrastructure)
+    - Pricing strategy
+    - Quality/reliability
+    
+    EXTERNAL FACTORS (contextual):
+    - Market timing (right place right time)
+    - Regulatory tailwind
+    - Funding access (war chest)
+    - Founder network/credibility
+    - Macro trends favoring them
+    
+    Framework C - 3C ANALYSIS:
+    - CUSTOMER: Họ hiểu user nào tốt nhất? Insight độc quyền?
+    - COMPANY: Năng lực nội bộ độc đáo? Talent? Culture?
+    - COMPETITOR: Họ vs ai trong market? Win/lose ở điểm nào?
+    
+    Critical Success Factors (CSFs):
+    Tổng hợp 3-5 CSFs - những yếu tố MUST HAVE để thắng 
+    trong industry này, không phải nice-to-have.
+    
+    ═══════════════════════════════════════════════════
+    PART 3 - IMPLICATIONS (actionable for us)
+    ═══════════════════════════════════════════════════
+    
+    Mỗi competitor cần answer 4 câu hỏi:
+    
+    THREAT LEVEL (1-5):
+    - Họ ảnh hưởng business mình ngay (high) hay xa (low)?
+    - Probability of direct collision?
+    - Impact magnitude nếu collide?
+    
+    LEARN (transferable lessons):
+    - Insight về user/market họ phát hiện trước
+    - Best practices có thể adopt
+    - Mistakes của họ để tránh
+    
+    COPY (replicable moves):
+    - Features có thể replicate (không có moat)
+    - Marketing tactics có thể adopt
+    - Pricing strategy có thể mirror
+    
+    COUNTER (defensive/offensive moves):
+    - Where they're vulnerable
+    - White space họ chưa nắm
+    - Differentiation angles vs họ
+    - Defensive moats nếu họ tấn công
+    
+    ═══════════════════════════════════════════════════
+    
+    Sources cho competitor research:
+    - Annual reports, S-1 filings (nếu IPO)
+    - TechCrunch, VietnamBusiness, DealStreetAsia
+    - Crunchbase (funding, team)
+    - SimilarWeb, AppAnnie (traffic, downloads)
+    - Job postings (signal về strategy direction)
+    - Press releases, founder interviews
+    - Social listening (user sentiment)
+    - App store reviews
     
     ═══════════════════════════════════════════════════════
     
@@ -203,28 +307,75 @@ insight_synthesizer:
     
     ═══════════════════════════════════════════════════════
     
-    💼 NẾU research_type = "Market/Competitor":
+💼 NẾU research_type = "Market/Competitor":
     
-    Insight pattern: MARKET DYNAMIC + STRATEGIC IMPLICATION + MOVE
+    Insight pattern phải reflect framework CONSULTING-GRADE.
     
-    "[Market dynamic/competitive shift] đang xảy ra vì [driving forces], 
-    tạo ra [strategic implication cho industry], 
-    nghĩa là [positioning/move cần xem xét]."
+    3 LOẠI INSIGHTS BẮT BUỘC trong report:
+    
+    ═══════════════════════════════════════════════════
+    LOẠI 1 - SUCCESS FACTOR INSIGHTS (3-4 cái)
+    ═══════════════════════════════════════════════════
+    
+    Pattern: "[Competitor X] thắng ở [aspect] vì [root cause - 
+    product factor + external factor], cụ thể họ [tactical move 
+    với evidence], dẫn đến [measurable outcome]."
     
     Ví dụ:
-    "Cuộc đua giảm phí giao dịch đang đẩy fintech VN xuống biên lợi 
-    nhuận 0.1-0.3% vì áp lực từ MoMo + ZaloPay subsidize, tạo ra 
-    consolidation pressure - top 3 players sẽ chiếm > 80% market 
-    share vào 2027, nghĩa là new entrants phải pivot sang vertical 
-    niche (logistics payment, B2B settlement) thay vì compete 
-    head-on với consumer wallet."
+    "Grab thắng ở mảng food delivery VN giai đoạn 2018-2022 vì kết 
+    hợp 3 yếu tố: (1) Product - super app integrate ride+food tạo 
+    cross-sell (40% Grabfood user đến từ Grab ride), (2) External - 
+    timing đúng lúc Vietnam đô thị hoá nhanh, smartphone penetration 
+    đạt 70%, (3) Tactical - subsidize aggressive 30-50% cho merchant 
+    + free delivery cho user trong 24 tháng đầu, đốt $200M+ để build 
+    habit. Kết quả: chiếm 47% market share food delivery VN cuối 2022."
     
-    Cần có:
-    - Market dynamic specific (pricing, positioning, M&A...)
-    - Driving forces với evidence
-    - Implication cho industry structure
-    - Strategic move recommendation
-    - Có thể quote market data (size, share, growth)
+    ═══════════════════════════════════════════════════
+    LOẠI 2 - VULNERABILITY INSIGHTS (1-2 cái)
+    ═══════════════════════════════════════════════════
+    
+    Pattern: "[Competitor X] yếu ở [specific aspect] vì [structural 
+    reason], thể hiện qua [evidence/signal], tạo opportunity cho 
+    [counter-move/positioning]."
+    
+    Ví dụ:
+    "ShopeePay yếu ở mảng B2B payment vì DNA của parent company 
+    Shopee là consumer marketplace, thiếu sales force enterprise 
+    và compliance team cho corporate banking, thể hiện qua việc họ 
+    gần như không có sản phẩm cho SME (chỉ có 'Shopee Mall seller 
+    payout' cơ bản), tạo opportunity cho positioning 'B2B-first 
+    payment with SME credit line' - segment 200K+ SME chưa được 
+    serve bởi top 3 wallet."
+    
+    ═══════════════════════════════════════════════════
+    LOẠI 3 - STRATEGIC IMPLICATION INSIGHTS (contrarian)
+    ═══════════════════════════════════════════════════
+    
+    Pattern phá vỡ assumption phổ biến về competitive dynamics:
+    
+    Ví dụ:
+    "Cuộc chiến 'super app' VN giai đoạn 2020-2024 không phải ai 
+    có nhiều feature nhất sẽ thắng (như assumption), mà là ai có 
+    high-frequency anchor service tốt nhất (ride-hailing cho Grab, 
+    chat cho Zalo). MoMo dù có 100+ services nhưng thiếu daily-use 
+    anchor, dẫn đến DAU/MAU ratio chỉ 18% vs Grab 35%. Implication: 
+    tham vọng super app cho new entrant không nên start với feature 
+    breadth, mà phải win 1 daily-use category trước."
+    
+    ═══════════════════════════════════════════════════
+    
+    Mỗi insight phải có:
+    - Specific competitor name
+    - Quantified evidence (number, %, timeframe)
+    - Source (report, interview, news article)
+    - Distinguish PRODUCT vs EXTERNAL factors
+    - Implication actionable cho us
+    
+    NGUYÊN TẮC:
+    - Decode WHY, không describe WHAT
+    - Tách rõ "họ giỏi" vs "họ may mắn"
+    - Mọi success có replicable component và non-replicable component
+    - Vulnerability không phải fix một lúc - là structural weakness
     
     ═══════════════════════════════════════════════════════
     
@@ -308,18 +459,44 @@ quality_reviewer:
     
     ═══════════════════════════════════════════════════════
     
-    💼 NẾU research_type = "Market/Competitor":
+💼 NẾU research_type = "Market/Competitor":
     
-    7-POINT TEST cho insight:
-    1. Có market dynamic cụ thể (không generic)?
-    2. Có driving forces với evidence (source + data)?
-    3. Có quantified market data (size, growth, share)?
-    4. Có strategic implication cho industry structure?
-    5. Có competitive positioning/comparison rõ?
-    6. Có move recommendation cho stakeholder?
-    7. Có timeframe/trajectory cho prediction?
+    8-POINT TEST cho insight (chuẩn consulting):
     
-    PASS bar: 5/5 insights >= 5/7
+    1. Có specific competitor name + quantified data?
+    2. Có decode WHY (root cause) không phải chỉ describe WHAT?
+    3. Tách rõ PRODUCT factors vs EXTERNAL factors?
+    4. Có evidence từ source uy tín (report, news, filing)?
+    5. Có distinguish: replicable vs non-replicable success?
+    6. Có addressed 1 trong 4 câu hỏi: Threat/Learn/Copy/Counter?
+    7. Strategic implication actionable cho stakeholder?
+    8. Có timeframe + trajectory rõ?
+    
+    PASS bar: 5/5 insights >= 6/8
+    
+    BẮT BUỘC kiểm tra report có đủ 4 PARTS:
+    - PART 1: Executive Summary (trả lời 3 câu cốt lõi - Ai? 
+      Sao họ thắng? Ý nghĩa gì với mình?)
+    - PART 2: Player Overview (đầy đủ 6 dimensions: company DNA,
+      scale, position, ecosystem, growth, milestones)
+    - PART 3: Success Factor Analysis (3 frameworks: AIDA funnel,
+      Product vs External, 3C)
+    - PART 4: Implications (4 câu hỏi: Threat/Learn/Copy/Counter)
+    
+    RED FLAGS auto REVISE:
+    ❌ Chỉ describe competitor (feature, pricing) không decode why
+    ❌ Không tách Product vs External factors
+    ❌ Không có Implications section
+    ❌ Threat level không quantified
+    ❌ "Họ thành công vì làm tốt" - quá generic
+    ❌ Thiếu Critical Success Factors (CSFs)
+    
+    GREEN FLAGS PASS:
+    ✅ Decode WHY với evidence
+    ✅ 3-5 CSFs rõ ràng
+    ✅ Phân biệt được "giỏi vs may mắn"
+    ✅ 4 implications (Threat/Learn/Copy/Counter) per competitor
+    ✅ Counter-move actionable
     
     ═══════════════════════════════════════════════════════
     
@@ -422,23 +599,156 @@ visualizer:
     
     ═══════════════════════════════════════════════════════
     
-    💼 NẾU research_type = "Market/Competitor":
+💼 NẾU research_type = "Market/Competitor":
     
-    Structure:
-    1. Executive Summary (3-5 bullets)
-    2. Research Brief
-    3. Market Overview (size, growth, dynamics)
-    4. Competitive Landscape (positioning map + table)
-    5. Key Players Deep Dive (3-5 main competitors):
-       - Strengths/Weaknesses
-       - Positioning
-       - Recent moves
-    6. Strategic Insights (5 insights chính + contrarian)
-    7. White Space Analysis (cơ hội chưa được nắm)
-    8. Strategic Recommendations (Option D format)
-    9. Risks & Watchlist (signals to monitor)
+    Structure CONSULTING DECK STYLE (kiểu McKinsey/BCG):
     
-    Tone: analytical, strategic, evidence-heavy
+    ═══════════════════════════════════════════════════
+    PART 1 - EXECUTIVE SUMMARY (Slide 1 critical)
+    ═══════════════════════════════════════════════════
+    
+    Trả lời ngay 3 câu hỏi cốt lõi:
+    
+    > **Đối thủ chính là ai và mạnh cỡ nào?**
+    > [3-5 players + scale tóm tắt]
+    > 
+    > **Họ thành công vì sao?**
+    > [3 critical success factors quan trọng nhất]
+    > 
+    > **Ý nghĩa gì với business mình?**
+    > [Threat level + 1 strategic implication chính]
+    
+    ═══════════════════════════════════════════════════
+    PART 2 - PLAYER OVERVIEW
+    ═══════════════════════════════════════════════════
+    
+    ## 🏢 Tổng quan đối thủ
+    
+    ### Bảng so sánh tổng thể
+    
+    | Player | Founded | Funding | Scale (User/Rev) | Market Share | Positioning |
+    |--------|---------|---------|------------------|--------------|-------------|
+    
+    ### Đào sâu từng player (3-5 competitors chính):
+    
+    #### [Tên Competitor #1]
+    
+    **🧬 Company DNA:**
+    - Thành lập: ...
+    - Founders: ...
+    - Funding: ...
+    
+    **📊 Business Scale:**
+    - Revenue/GMV: ...
+    - Users: ...
+    - Market share: ...
+    
+    **🎯 Market Position:**
+    - Positioning: ...
+    - Target segment: ...
+    - Pricing tier: ...
+    
+    **🛠️ Product Ecosystem:**
+    - Core products: ...
+    - Recent launches: ...
+    
+    **📈 Growth Trajectory:**
+    - 3-year revenue trend
+    - User growth pattern
+    
+    **🏆 Key Milestones:**
+    - [Major events timeline]
+    
+    [Lặp cho competitor 2-5]
+    
+    ═══════════════════════════════════════════════════
+    PART 3 - SUCCESS FACTOR ANALYSIS
+    ═══════════════════════════════════════════════════
+    
+    ## 🔬 Giải mã thành công - Tại sao họ thắng?
+    
+    ### Framework A: Awareness → Trial → Usage Funnel
+    
+    | Player | Awareness Strategy | Trial Conversion | Usage Retention |
+    |--------|-------------------|------------------|-----------------|
+    
+    ### Framework B: Product vs External Factors
+    
+    | Player | Product Factors (Controllable) | External Factors (Contextual) |
+    |--------|-------------------------------|------------------------------|
+    
+    ### Framework C: 3C Analysis
+    
+    | Player | Customer Insight | Company Capability | Competitor Advantage |
+    |--------|------------------|---------------------|----------------------|
+    
+    ### 🎯 Critical Success Factors (CSFs) cho industry
+    
+    1. **CSF #1: [Tên]**
+       - Tại sao quan trọng
+       - Player nào làm tốt nhất
+       - Bench mark cần đạt
+    
+    2. **CSF #2: [Tên]**
+       [...]
+    
+    [3-5 CSFs total]
+    
+    ═══════════════════════════════════════════════════
+    PART 4 - IMPLICATIONS FOR US
+    ═══════════════════════════════════════════════════
+    
+    ## ⚡ Hàm ý cho chiến lược
+    
+    ### Bảng đánh giá tổng hợp
+    
+    | Player | Threat Level (1-5) | Learn từ họ | Copy được | Counter Move |
+    |--------|-------------------|-------------|-----------|--------------|
+    
+    ### Đào sâu cho Top 3 threats:
+    
+    #### [Competitor #1] - Threat Level: X/5
+    
+    **🎓 LEARN (transferable lessons):**
+    - [3-5 lessons cụ thể]
+    
+    **📋 COPY (replicable moves):**
+    - [3-5 features/tactics có thể adopt]
+    
+    **🛡️ COUNTER (defensive/offensive):**
+    - Vulnerabilities: ...
+    - White space: ...
+    - Differentiation angle: ...
+    - Defensive moves nếu họ attack: ...
+    
+    [Lặp cho threat #2, #3]
+    
+    ═══════════════════════════════════════════════════
+    PHẦN BỔ SUNG (universal):
+    ═══════════════════════════════════════════════════
+    
+    ## 🎬 Hồi 1: Bức tranh hiện tại
+    [Cuộc chiến competitive đang diễn ra]
+    
+    ## 🔍 Hồi 2: Sự thật ẩn giấu
+    [Contrarian insight về market dynamics]
+    
+    ## 🎯 Hồi 3: Cú đặt cược lớn
+    [Strategic positioning cho mình]
+    
+    ## ⏰ Hồi 4: Tại sao là lúc này?
+    [Timing window]
+    
+    ## 🚀 Hồi 5: Cần làm gì ngay tuần tới?
+    [Concrete competitive moves]
+    
+    ## 🗺️ Watchlist - Tín hiệu cần theo dõi
+    [Signals from competitors cần monitor]
+    
+    ## ⚠️ Rủi ro
+    
+    Tone: analytical, evidence-heavy, decision-focused
+    (kiểu management consulting deck cho board meeting)
     
     ═══════════════════════════════════════════════════════
     
